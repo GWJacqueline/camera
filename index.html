@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <title>回单自助服务</title>
+    照片上传
+  </head>
+  <body>
+    <header>
+      照片上传
+    </header>
+    <section class="content">
+      <section class="uploadimg">
+        <input
+          class="uploadimg-input"
+          name="upload"
+          accept="image/*"
+          type="file"
         />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="format-detection" content="telephone=no" />
-        <link rel="stylesheet" href="css/layout.css" />
-        <title>回单自助服务</title>
-        照片上传
-    </head>
-    <body>
-        <header>
-            照片上传
-        </header>
-        <section class="content">
-            <section class="uploadimg">
-                <input
-                    class="uploadimg-input"
-                    name="upload"
-                    accept="image/*"
-                    type="file"
-                />
-                <img class="uploadimg-img" src="" />
-                <div class="item">
-                    <ul class="bar">
-                        <li>重新上传</li>
-                        <li>清除图片</li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-    </body>
-    <script src="js/jquery.min.js"></script>
-    <script>
-        (function() {
-            /*input聚焦且有值时，出现叉号，点击可删除全部文本;*/
-            /*用法：在input输入框，增加类名 deltext*/
-            $.fn.upLoadImg = function() {
-                return this.each(function(i) {
-                    var self = $(this);
-                    var img = $(this).next(".uploadimg-img");
-                    var item = $(this).next(".item");
-                    self.bind("input propertychange", function() {
-                        if (img.attr("src") == "") {
-                            item.hide();
-                        } else {
-                            item.show();
-                        }
-                    });
-                });
-            };
-        })();
-
-        $(function() {
-            $(".uploadimg-input").upLoadImg();
+        <img class="uploadimg-img" src="" />
+        <div class="item">
+          <ul class="bar">
+            <li>重新上传</li>
+            <li>清除图片</li>
+          </ul>
+        </div>
+      </section>
+      <label>数字输入</label>
+      <input type="number" maxlength="10" />
+    </section>
+  </body>
+  <script src="js/jquery.min.js"></script>
+  <script>
+    (function() {
+      /*input聚焦且有值时，出现叉号，点击可删除全部文本;*/
+      /*用法：在input输入框，增加类名 deltext*/
+      $.fn.upLoadImg = function() {
+        return this.each(function(i) {
+          var self = $(this);
+          var img = $(this).next(".uploadimg-img");
+          var item = $(this).next(".item");
+          self.bind("input propertychange", function() {
+            if (img.attr("src") == "") {
+              item.hide();
+            } else {
+              item.show();
+            }
+          });
         });
-    </script>
+      };
+    })();
+
+    $(function() {
+      $(".uploadimg-input").upLoadImg();
+    });
+  </script>
 </html>
